@@ -9,4 +9,4 @@ Python 2.7, Google App Engine, Jinja2.
 
 Run by command: dev_appserver.py
 
-Or follow ![Alt text](http://tactical-racer-143500.appspot.com/ "") link for a demo.
+Or follow [link](http://tactical-racer-143500.appspot.com/ "") for a demo.
