@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if error %}
+  <div class="error">
+    {{error}}
+  </div>
+  {% endif %}
+  {{post.render() | safe}}
+
+    {% if post.comments %}
+
+    <div class="post-comments">
+      <h2>Comments</h2>
+
+      {% for c in post.comments %}
+
+        <div class="comment">
+          <div class="writer-comment">{{ c.parent().name }} wrote</div>
+          <p class="comment-content">{{ c.comment }}</p>
+          {% if c.parent().name == current_blogger %}
+            <a href="/blog/{{post.key().id()}}/updatecomment/{{c.key().id()}}">update</a>
+            <span class="separator"> | </span>
+            <a href="/blog/{{post.key().id()}}/removecomment/{{c.key().id()}}">delete</a>
+          {% endif %}
+        </div>
+
+      {% endfor %}
+
+      <a href="/blog/{{post.key().id()}}/newcomment">Comment</a>
+
+    {% endif %}
+
+{% endblock %}

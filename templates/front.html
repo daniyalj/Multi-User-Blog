@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3><a href = "/blog/newpost">New Story<a></h3>
+		<br>
+			<br>
+  {% for p in posts %}
+    {{ p.render() | safe }}
+			</br>
+
+			<div class="comment-number">
+				<span class="comment-count">{{p.comments.count()}} comments</span>
+				<h1><a href="/blog/{{p.key().id()}}/newcomment">Say Something About This Post!</a></h1>
+			</div>
+
+			<div align = "left">
+				<font color="black"><a href="/blog/{{p.key().id()}}/like">Like</a> |
+			{% if p.authored == current_blogger %}
+					<a href="/blog/{{p.key().id()}}/updatepost">Edit<a> | 
+							<a href="/blog/{{p.key().id()}}/removepost">Delete<a></font>
+			{% endif %}
+							</div>
+							<br>
+			{% endfor %}
+
+{% endblock %}
+								
